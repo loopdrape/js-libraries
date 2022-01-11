@@ -87,6 +87,9 @@
 		"build": "yarn build:log",
 		"build:test": "cross-env NODE_ENV=test webpack --colors",
 		"build:prod": "cross-env NODE_ENV=production webpack --colors",
-		"dist": "yarn build:prod && node ./build_modules/updSourceMap"
+		"dist": "yarn build:prod && node ./build_modules/updSourceMap",
+		"build:lib-dev": "cross-env B_TYPE=libraries webpack --colors",
+		"build:lib-prod": "cross-env NODE_ENV=production B_TYPE=libraries webpack --colors",
+		"dist:lib": "yarn build:lib-dev && yarn build:lib-prod && node ./build_modules/updSourceMap"
 	}
 }
