@@ -1,0 +1,17 @@
+{
+	"editor.insertSpaces": false,
+	"editor.renderWhitespace": "all",
+	"editor.tabSize": 2,
+	"editor.trimAutoWhitespace": false,
+	"files.exclude": {
+		"**/node_modules": true,
+		"**/.vagrant": true,
+		"**/Thumbs.db": true,
+		"**/.DS_Store": true
+	},
+	"es6-css-minify.minifyOnSave": "no",
+	"htmlhint.enable": false,
+	"stylelint.autoFixOnSave": true,
+	"markdown.styles": [".vscode/markdown.css"],
+	"markdown-pdf.styles": [".vscode/markdown.css"]
+}

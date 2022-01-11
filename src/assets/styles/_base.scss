@@ -1,0 +1,61 @@
+@import "~normalize.css";
+
+* {
+	// [box-sizing] default: border-box
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	
+	&::before,
+	&::after {
+		box-sizing: border-box;
+	}
+}
+
+html {
+	font-size: 62.5%; // 10px
+}
+
+img {
+	height: auto;
+	max-width: 100%;
+}
+
+ol,
+ul {
+	list-style: none;
+	padding: 0;
+}
+
+dl,
+dd {
+	margin: 0;
+}
+
+iframe {
+	border-width: 0;
+}
+
+.hide {
+	display: none !important;
+}
+
+.template {
+	display: none;
+}
+
+.break-word {
+	@extend %break-word;
+}
+
+.indent-down {
+	@extend %indent-down;
+}
+
+.indent-up {
+	@extend %indent-up;
+}
+
+.attention {
+	@extend %attention;
+}

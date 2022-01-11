@@ -1,0 +1,92 @@
+@mixin fontStyleItalic {
+	display: inline-block;
+	font-style: normal;
+	transform: skewX(-15deg);
+}
+
+@mixin updItalicTags {
+	i,
+	cite,
+	em,
+	var,
+	address,
+	dfn {
+		@include fontStyleItalic;
+	}
+}
+
+@mixin font-type-mei {
+	font-family: Meiryo, "メイリオ", sans-serif;
+	
+	@include updItalicTags;
+}
+
+@mixin font-type-maru {
+	font-family: "Lucida Grande", "segoe UI", Arial, "ヒラギノ丸ゴ ProN W4", "Hiragino Maru Gothic ProN", sans-serif;
+}
+
+@mixin font-type-kaku {
+	font-family: "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", sans-serif;
+}
+
+@mixin type-yu {
+	font-family: "游ゴシック", YuGothic, "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", sans-serif;
+}
+
+// ------------------------------------
+// google web font
+
+// /**
+//  * importGoogleWebFont
+//  * @param $fonts: フォント名（spaceは+で置き換え。複数指定の場合は|区切りで指定）
+//  * @param [$weights]: ,区切りで指定
+//  */
+@mixin importGoogleWebFont($fonts, $weights: "400", $subset: "") {
+	$subsetParam: if($subset, "&subset=#{$subset}", "");
+	
+	@at-root {
+		@import url("https://fonts.googleapis.com/css?family=#{$fonts}:#{$weights}&display=swap#{$subsetParam}");
+	}
+}
+
+// Noto Sans JP
+@mixin importNotoSansJP($weights: "300,400,500,700") {
+	//	@import "//fonts.googleapis.com/earlyaccess/notosansjapanese.css";
+	@include importGoogleWebFont("Noto+Sans+JP", $weights, "japanese");
+}
+
+@mixin font-type-noto {
+	//	font-family: "Noto Sans Japanese", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", sans-serif;
+	font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", sans-serif;
+}
+
+// Noto Serif JP
+@mixin importNotoSerifJP($weights: "400,700") {
+	@include importGoogleWebFont("Noto+Serif+JP", $weights, "japanese");
+}
+
+@mixin font-type-notoSerif {
+	font-family: "Noto Serif JP", serif;
+}
+
+// Open Sans
+@mixin importOpenSans($weights: "400,400italic,700,700italic") {
+	@include importGoogleWebFont("Open+Sans", $weights);
+}
+
+@mixin font-type-opsans {
+	font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, Verdana, Roboto, sans-serif;
+}
+
+@mixin font-type-opnoto {
+	font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, Verdana, Roboto, "Noto Sans JP", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", sans-serif;
+}
+
+// Source Code Pro
+@mixin importSourceCodePro($weights: "400") {
+	@include importGoogleWebFont("Source+Code+Pro", $weights);
+}
+
+@mixin font-type-sourcecodepro {
+	font-family: "Source Code Pro", sans-serif;
+}

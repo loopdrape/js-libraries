@@ -1,0 +1,75 @@
+$white: #fff;
+$offwhite: #f8f9fa;
+$black: #000;
+$offblack: #333;
+$charcoal: #666;
+$grey: #818181;
+$light_grey: #ababab;
+
+$red: #d40000;
+$light_red: #ff6767;
+$ulight_red: #ffe6e6;
+
+$green: #1f7a1f;
+$emerald_green: #36cba7;
+$bright_green: #70ec52;
+$light_green: lighten($green, 8%);
+
+$navy: #1e498f;
+$blue: #2963c1;
+$bright_blue: #2e70db;
+$tmn_blue: #009ce1;
+$light_bule: #17c6ea;
+$bluegrey: #cbdaf2;
+$light_bluegrey: #dce6f5;
+$ulight_blue: #f7fbff;
+
+$purple_blue: #6080ea;
+$purple: #d55eff;
+$bright_purple: #f320e5;
+
+$orange: #f28400;
+$light_orange: #fba738;
+$ulight_orange: #ffe4b5;
+$yellow: #f6cc31;
+$light_yellow: #f9eb53;
+
+// テーマカラー
+$theme_c: $blue;
+// サブカラー
+$sub_c: $orange;
+
+// 基本背景色
+$base_bgc: $white;
+$sub_bgc: $light_bluegrey;
+
+// 基本線色
+$base_bdc: $light_grey;
+
+// 基本文字色
+$base_txc: $charcoal;
+$sub_txc: $offblack;
+
+// リンクの色
+$link_txc: $black;
+$link_hvc: $tmn_blue;
+
+// ボタンの色
+$btn_bg: linear-gradient(72deg, $bright_blue 0%, $blue 100%);
+$btn_hbg: $navy;
+$btn_txc: $white;
+
+// 入力欄に関する色
+$field_bgc: $white;
+$label_bgc: $ulight_blue;
+$inp_bdc: $light_grey;
+$inp_bgc: $white;
+$inp_acv_bdc: $tmn_blue;
+
+// エラー表示用の強調色
+$err_txc: $red;
+$err_bgc: $ulight_red;
+
+// ログイン画面の背景色
+$login_bgc_01: #00a0e64d;
+$login_bgc_02: #2963c159;

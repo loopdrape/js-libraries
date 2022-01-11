@@ -1,0 +1,164 @@
+@mixin defineIcoMoon($fonts_path) {
+	@font-face {
+		font-family: "icomoon";
+		font-style: normal;
+		font-weight: 400;
+		src: url("#{$fonts_path}/icomoon.eot?q2cj9s");
+		src:
+			url("#{$fonts_path}/icomoon.eot?q2cj9s#iefix") format("embedded-opentype"),
+			url("#{$fonts_path}/icomoon.ttf?q2cj9s") format("truetype"),
+			url("#{$fonts_path}/icomoon.woff?q2cj9s") format("woff"),
+			url("#{$fonts_path}/icomoon.svg?q2cj9s#icomoon") format("svg");
+	}
+}
+
+%Better-Font-Rendering {
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+}
+
+%icon-common {
+	$speak: speak;
+	
+	font-family: "icomoon", sans-serif;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 1;
+	position: relative;
+	text-transform: none;
+	#{$speak}: none;
+	
+	@extend %Better-Font-Rendering;
+}
+
+%icon-before {
+	@extend %icon-common;
+	
+	margin-right: $unit;
+}
+
+%icon-after {
+	@extend %icon-common;
+	
+	margin-left: $unit;
+}
+
+$icon_contents: (
+	home: "e900",
+	image: "e90d",
+	print: "e954",
+	download: "e95e",
+	upload: "e95f",
+	mail: "e0e1",
+	send: "e163",
+	config: "e994",
+	close: "e90f",
+	edit: "e254",
+	delete: "e9ad",
+	preview: "e880",
+	minus: "ea0b",
+	plus: "ea0a",
+	undo: "e967",
+	redo: "e968",
+	menu: "e5d2",
+	search: "e8b6",
+	calendar: "e901",
+	external: "ea7e",
+	zip: "e92b",
+	attachment: "e2bc",
+	check: "e5ca",
+	enter: "ea13",
+	exit: "ea14",
+	attention: "e001",
+	help: "e8fd",
+	pdf: "e415",
+	
+	// Arrow icons
+	arrow-t: "e912",
+	arrow-r: "e913",
+	arrow-b: "e914",
+	arrow-l: "e915",
+	arrow-bold-r: "e910",
+	arrow-bold-l: "e911",
+	arrow2-t: "e5d8",
+	arrow2-r: "e5c8",
+	arrow2-b: "e5db",
+	arrow2-l: "e5c4",
+	
+	// Adobe acrobat & Microsoft office
+	acrobat: "e902",
+	ms-office: "e906",
+	ms-doc: "e903",
+	ms-xls: "e904",
+	ms-ppt: "e905"
+);
+
+$icon_colors: (
+	// Adobe acrobat & Microsoft office
+	acrobat: #ee3f24,
+	ms-office: #e43a00,
+	ms-doc: #2b579a,
+	ms-xls: #217346,
+	ms-ppt: #d24726
+);
+
+@mixin setIcoMoon(
+	$icon_key: false,
+	$before_after: false,
+	$map_contents: $icon_contents,
+	$map_colors: $icon_colors
+) {
+	@if $icon_key and map-has-key($map_contents, $icon_key) {
+		$icon_val: map-get($map_contents, $icon_key);
+		
+		@if $before_after == before {
+			&::before {
+				@extend %icon-before;
+				
+				content: unquote("\"") + unquote(str-insert($icon_val, "\\", 1)) + unquote("\"");
+				
+				@if map-has-key($map_colors, $icon_key) {
+					color: map-get($map_colors, $icon_key);
+				}
+			}
+		} @else if $before_after == after {
+			&::after {
+				@extend %icon-after;
+				
+				content: unquote("\"") + unquote(str-insert($icon_val, "\\", 1)) + unquote("\"");
+				
+				@if map-has-key($map_colors, $icon_key) {
+					color: map-get($map_colors, $icon_key);
+				}
+			}
+		} @else {
+			@extend %icon-common;
+			
+			content: unquote("\"") + unquote(str-insert($icon_val, "\\", 1)) + unquote("\"");
+			
+			@if map-has-key($map_colors, $icon_key) {
+				color: map-get($map_colors, $icon_key);
+			}
+		}
+	} @else {
+		.icon-before::before {
+			@extend %icon-before;
+		}
+		
+		.icon-after::after {
+			@extend %icon-after;
+		}
+		
+		@each $key, $val in $map_contents {
+			.icon-before[data-icon="#{$key}"]::before,
+			.icon-after[data-icon="#{$key}"]::after {
+				content: unquote("\"") + unquote(str-insert($val, "\\", 1)) + unquote("\"");
+				
+				@if map-has-key($map_colors, $key) {
+					color: map-get($map_colors, $key);
+				}
+			}
+		}
+	}
+}

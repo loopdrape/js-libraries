@@ -1,0 +1,23 @@
+{
+  "recommendations": [
+    "formulahendry.auto-rename-tag",
+    "alefragnani.bookmarks",
+    "coenraads.bracket-pair-colorizer",
+    "naumovs.color-highlight",
+    "oouo-diogo-perdigao.docthis",
+    "editorconfig.editorconfig",
+    "dbaeumer.vscode-eslint",
+    "oderwat.indent-rainbow",
+    "ms-ceintl.vscode-language-pack-ja",
+    "bierner.markdown-preview-github-styles",
+    "pkief.material-icon-theme",
+    "liviuschera.noctis",
+    "ionutvmi.path-autocomplete",
+    "hex-ci.stylelint-plus",
+    "ms-vsliveshare.vsliveshare",
+    "mosapride.zenkaku",
+    "qassimfarid.ejs-language-support",
+    "eamodio.gitlens",
+    "mhutchie.git-graph"
+  ]
+}

@@ -1,0 +1,65 @@
+%break-word {
+	overflow-wrap: break-word;
+	word-break: break-all;
+	word-wrap: break-word;
+}
+
+%indent-down {
+	padding-left: 1em !important;
+}
+
+%indent-up {
+	margin-left: -1em !important;
+}
+
+%attention {
+	@extend %indent-down;
+	
+	text-indent: -1em !important;
+	
+	&::before {
+		content: "※";
+	}
+}
+
+%period-splitter {
+	display: inline-block;
+	margin-left: .5em;
+	margin-right: .5em;
+	
+	&::before {
+		content: "～";
+	}
+}
+
+%time-splitter {
+	display: inline-block;
+	margin-left: .1em;
+	margin-right: .1em;
+	
+	&::before {
+		content: "：";
+	}
+}
+
+%underline-on-hover {
+	position: relative;
+	
+	&::after {
+		border-top: 1px solid $base_bdc;
+		bottom: 0;
+		content: "";
+		display: block;
+		left: 0;
+		position: absolute;
+		transform: scale(0);
+		transition: transform .2s;
+		width: 100%;
+	}
+	
+	&.is-hover {
+		&::after {
+			transform: scale(1);
+		}
+	}
+}

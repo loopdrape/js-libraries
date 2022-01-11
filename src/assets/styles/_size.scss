@@ -1,0 +1,21 @@
+
+// size
+$unit: 5px;
+$block_space: ($unit * 6);
+$block_pad: ($unit * 4);
+
+// header
+$header_h_pc: 65px;
+$header_h_sp: 62px;
+
+// navigation
+$nav_open_w: 225px;
+$nav_close_w: 70px;
+
+// content
+$cntnt_w: 1212px;
+$cntnt_w_s: 1056px;
+
+// media query switch
+$mq_w_sp: 800px; // 667px;
+$mq_w_tablet: 960px;

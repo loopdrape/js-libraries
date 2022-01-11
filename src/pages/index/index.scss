@@ -1,0 +1,35 @@
+@import "./_common";
+
+.page-header {
+	background-color: $theme_c;
+}
+
+.page-title {
+	color: $white;
+	font-size: 3rem;
+	font-weight: 300;
+	line-height: 4rem;
+	margin: 0;
+	padding: ($unit * 2) 0;
+}
+
+.page-main {
+	padding: $block_pad 0;
+	
+	article {
+		> h2 {
+			color: $theme_c;
+			font-size: 1.8rem;
+			line-height: 2rem;
+			margin-bottom: $unit;
+		}
+		
+		> p {
+			@extend %indent-down;
+		}
+		
+		+ article {
+			margin-top: $block_space;
+		}
+	}
+}

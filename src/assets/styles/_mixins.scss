@@ -1,0 +1,106 @@
+@mixin media-max($width: $mq_w_sp) {
+	@media screen and (max-width: $width) {
+		@content;
+	}
+}
+
+@mixin media-min($width: $mq_w_sp) {
+	@media print, screen and (min-width: $width + 1px) {
+		@content;
+	}
+}
+
+@mixin media-tablet($minmax: max) {
+	@if $minmax == max {
+		@include media-max($mq_w_tablet) {
+			@content;
+		}
+	} @else if $minmax == min {
+		@include media-min($mq_w_tablet) {
+			@content;
+		}
+	}
+}
+
+@mixin clearfix {
+	zoom: 1;
+	
+	&::after {
+		clear: both;
+		content: "";
+		display: block;
+		height: 0;
+		overflow: hidden;
+	}
+}
+
+@mixin hide-txt {
+	color: transparent;
+	overflow: hidden;
+	text-indent: 100%;
+	white-space: nowrap;
+}
+
+@mixin flexbox($direction: row, $wrap: nowrap, $justify_content: flex-start, $align_items: stretch, $align_content: stretch) {
+	align-content: $align_content;
+	align-items: $align_items;
+	display: flex;
+	flex-flow: $direction $wrap;
+	justify-content: $justify_content;
+}
+
+@mixin inlineflex($direction: row, $wrap: nowrap, $justify_content: flex-start, $align_items: stretch, $align_content: stretch) {
+	align-content: $align_content;
+	align-items: $align_items;
+	display: inline-flex;
+	flex-flow: $direction $wrap;
+	justify-content: $justify_content;
+}
+
+@mixin background-dot($x: 1em, $y: 1em, $color: rgba(#000, .1), $bgc: rgba(#fff, .1)) {
+	background-image: radial-gradient(center, circle closest-side, $color, $color 50%, $bgc 50%, $bgc);
+	background-size: $x $y;
+}
+
+@mixin vertical-writing {
+	text-align: justify;
+	text-justify: inter-ideograph;
+	writing-mode: tb-rl;
+	writing-mode: vertical-rl;
+}
+
+@mixin placeholderColor($clr) {
+	&:placeholder-shown {
+		color: $clr;
+	}
+	
+	&::-webkit-input-placeholder {
+		color: $clr;
+	}
+	
+	&:-moz-placeholder {
+		color: $clr;
+		opacity: 1;
+	}
+	
+	&::-moz-placeholder {
+		color: $clr;
+		opacity: 1;
+	}
+	
+	&:-ms-input-placeholder {
+		color: $clr;
+	}
+	
+	&::-ms-input-placeholder {
+		color: $clr;
+	}
+}
+
+@mixin styleUnderlineOnHover($color) {
+	@extend %underline-on-hover;
+	
+	&::after {
+		border-top-color: $color;
+	}
+}
