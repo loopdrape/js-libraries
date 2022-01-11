@@ -1,0 +1,169 @@
+@import "~@@assets/styles/_colors";
+@import "~@@assets/styles/_size";
+@import "~@@assets/styles/_mixins";
+@import "~@@assets/styles/_icomoon";
+@import "~@@assets/styles/_fonts";
+@import "~@@assets/styles/_extends";
+@import "~@@assets/styles/_functions";
+@import "~@@assets/styles/_base";
+
+@include defineIcoMoon("~@@assets/fonts");
+@include setIcoMoon();
+@include importNotoSansJP();
+@include importSourceCodePro();
+
+[data-mq="sp"] {
+	@include media-min {
+		display: none !important;
+	}
+}
+
+[data-mq="pc"] {
+	@include media-max {
+		display: none !important;
+	}
+}
+
+[data-device-for="sp"] {
+	body[data-device="pc"] & {
+		@extend .hide;
+	}
+}
+
+[data-device-for="pc"] {
+	body[data-device="sp"] & {
+		@extend .hide;
+	}
+}
+
+[data-device-for] {
+	body:not([data-device]) & {
+		opacity: 0;
+		transition: opacity .2s;
+	}
+}
+
+body {
+	@include font-type-noto();
+	
+	background-color: $base_bgc;
+	color: $base_txc;
+	font-size: 1.6rem;
+	line-height: 1.4;
+	margin: auto;
+	position: relative;
+	
+	// 文字サイズ自動調整OFF タップ時のハイライトOFF
+	-webkit-tap-highlight-color: rgba(#000, 0);
+	-webkit-text-size-adjust: 100%;
+	
+	@media screen {
+		min-height: 100vh;
+	}
+	
+	@include media-min {
+		min-width: $cntnt_w;
+	}
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-size: 1.4rem;
+	line-height: 1.2;
+}
+
+%link-after-icon {
+	&:not(:last-child) {
+		margin-right: $unit;
+	}
+	
+	&::after {
+		display: inline-block;
+		text-decoration: none;
+	}
+}
+
+a {
+	color: $link_txc;
+	transition: all .2s;
+	
+	&.is-hover {
+		color: $link_hvc;
+	}
+	
+	&[href^="tel:"] {
+		[data-device="pc"] & {
+			color: inherit;
+			pointer-events: none;
+			text-decoration: none;
+		}
+	}
+	
+	&[target="_blank"]:not([href*=".pdf"]) {
+		@include setIcoMoon(external, after);
+		
+		@extend %link-after-icon;
+	}
+	
+	&[href*=".pdf"] {
+		@include setIcoMoon(acrobat, after);
+		
+		@extend %link-after-icon;
+	}
+}
+
+em,
+dt {
+	font-style: normal;
+	font-weight: 500;
+}
+
+strong {
+	font-weight: 700;
+}
+
+p {
+	line-height: 1.6;
+	
+	&:empty {
+		height: 1em;
+	}
+}
+
+code,
+pre {
+	background-color: $offblack;
+	border-radius: 2px;
+	color: $light_yellow;
+	display: inline-block;
+	text-indent: 0;
+}
+
+code {
+	@include font-type-sourcecodepro();
+	
+	margin: 0 $unit;
+	padding: 0 $unit;
+}
+
+pre {
+	line-height: 1.5;
+	margin: $unit 0;
+	padding: $unit 0;
+	
+	> code {
+		background-color: transparent;
+		display: block;
+		margin: 0;
+	}
+}
+
+.content {
+	margin: auto;
+	max-width: $cntnt_w;
+	padding: 0 ($block_pad / 2);
+}

@@ -1,0 +1,59 @@
+# for ERROR
+#ErrorDocument 404 /errors/404.html
+
+# for Safety Site
+# Header set Content-Security-Policy "reflected-xss block"
+# Header set X-Content-Security-Policy "reflected-xss block"
+# Header always set X-Download-Options "noopen"
+Header always set X-XSS-Protection "1; mode=block"
+Header always set X-Frame-Option "DENY"
+Header always set X-Content-Type-Options "nosniff"
+
+# for cache
+##Pragma no-cacheはIEでfontファイルが読み込まれない
+##Header set Pragma no-cache
+#Header set Cache-Control no-cache
+
+# for SSL Site
+Header set Strict-Transport-Security "max-age=31536000; preload"
+
+# for Redirect
+#Options +FollowSymLinks
+RewriteEngine on
+
+## remove www.
+RewriteCond %{HTTP_HOST} ^www\.(.*) [NC]
+RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+
+## add www.
+#RewriteCond %{HTTP_HOST} !^www\.
+#RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]
+
+## lock HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+## remove index.html
+RewriteCond %{REQUEST_FILENAME} index\.html
+# for root dir
+RewriteRule ^index\.html$ / [R=301,L]
+# for sub dir
+RewriteRule ^(.*)/index\.html$ /$1/ [R=301,L]
+
+# 【WebP対応ブラウザかつWebPファイルがあればWebPファイルを返す設定】
+# WebP対応ブラウザはAcceptリクエストヘッダにimage/webpを含む慣例
+RewriteCond %{HTTP_ACCEPT} image/webp
+
+# 対応するWebP版ファイルの存在チェック
+RewriteCond %{SCRIPT_FILENAME}.webp -f
+
+# *.jpg、*.png、*.gifファイルを*.webpファイルに内部的にルーティングする
+# Content-Typeはimage/webpにする
+RewriteRule .(jpe?g|png|gif)$ %{SCRIPT_FILENAME}.webp [T=image/webp,L]
+
+AddType image/webp .webp
+
+# WebPファイルがあるかもしれない画像へのリクエストは全てVary: Acceptレスポンスヘッダを返す設定(CDN対策)
+# （Headerディレクティブ単独ではできないのでSetEnvIfディレクティブとの組み合わせで実現する）
+SetEnvIf Request_URI "\.(jpe?g|png|gif)$" _image_request
+Header append Vary Accept env=_image_request

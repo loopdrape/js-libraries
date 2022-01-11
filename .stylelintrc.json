@@ -1,0 +1,59 @@
+{
+	"syntax": "scss",
+	"extends": [
+		"stylelint-config-standard",
+		"stylelint-config-standard-scss"
+	],
+	"plugins": [
+		"stylelint-order",
+		"stylelint-scss"
+	],
+	"ignoreFiles": [
+		"node_modules/**",
+		"lib/**",
+		"dist/**",
+		"**/*.js",
+		"**/_normalize.scss"
+	],
+	"rules": {
+		"at-rule-empty-line-before": ["always", {
+			"except": [
+				"blockless-after-same-name-blockless",
+				"first-nested"
+			],
+			"ignore": ["after-comment"],
+			"ignoreAtRules": ["else"]
+		}],
+		"at-rule-no-vendor-prefix": true,
+		"block-closing-brace-newline-after": ["always", {
+			"ignoreAtRules": ["if", "else"]
+		}],
+		"color-named": "never",
+		"function-url-quotes": "always",
+		"font-weight-notation": "numeric",
+		"indentation": "tab",
+		"media-feature-name-no-vendor-prefix": true,
+		"number-leading-zero": "never",
+		"no-eol-whitespace": [true, {
+			"ignore": ["empty-lines"]
+		}],
+		"no-descending-specificity": null,
+		"order/properties-alphabetical-order": true,
+		"property-no-vendor-prefix": [true, {
+			"ignoreProperties": [
+				"appearance",
+				"overflow-scrolling",
+				"tap-highlight-color",
+				"text-size-adjust"
+			]
+		}],
+		"scss/at-else-empty-line-before": "never",
+		"scss/dollar-variable-colon-space-after": "always",
+		"selector-attribute-quotes": "always",
+		"selector-no-vendor-prefix": [true, {
+			"ignoreSelectors": ["/-placeholder$/", "/-font-smoothing$/"]
+		}],
+		"string-quotes": "double",
+		"value-no-vendor-prefix": true
+	}
+}

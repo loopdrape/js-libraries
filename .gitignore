@@ -1,0 +1,43 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Backups
+*.BK.*
+*backup/
+_bk/
+
+# Compiled binary addons (https://nodejs.org/api/addons.html)
+build/Release
+
+# Dependency directories
+node_modules/
+
+# Optional eslint cache
+.eslintcache
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variables file
+.env
+
+# for WINDOWS
+Thumbs.db
+
+# for Mac
+.DS_Store
+
+# history directory
+.history/
+
+# vagrant directory
+.vagrant/
+
+# distribution directory
+dist/*
+
+!.gitkeep
