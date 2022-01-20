@@ -38,6 +38,6 @@ Thumbs.db
 .vagrant/
 
 # distribution directory
-dist/*
+dist/demo/*
 
 !.gitkeep
