@@ -7,7 +7,7 @@
 		"type": "git",
 		"url": "https://github.com/loopdrape/js-libraries.git"
 	},
-	"main": "./src/index.js",
+	"main": "./dist/u_.js",
 	"author": "hys kohsuke",
 	"license": "MIT",
 	"directories": {
