@@ -32,7 +32,7 @@ config.output = {
 	chunkFilename: `[id].${isProd ? "min." : ""}js`,
 	library: "[name]",
 	libraryTarget: "umd",
-	libraryExport: "default",
+	// libraryExport: "default",
 	globalObject: "this",
 };
 
